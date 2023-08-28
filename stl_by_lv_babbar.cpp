@@ -1,10 +1,11 @@
-// Code by Akansha
 #include<iostream>
 #include<array>
 #include<vector>
 #include<deque>
 #include<list>
 #include<stack>
+#include<queue>
+#include<set>
 using namespace std;
 int main(){
       // # Array (static)
@@ -67,7 +68,7 @@ int main(){
         cout<<i<<" ";
     }cout<<endl;
 
-      //# Doubly ende Queue or Deque (Dynamic)
+      //# Doubly ended Queue or Deque (Dynamic)
         // here the insertion and deletion can carry out both from back and front
 
     deque<int> de;
@@ -100,6 +101,7 @@ int main(){
     l.erase(l.begin());
 
     // #Stack
+      // Last in first out
     stack<string> s;
     s.push("kumari");
     s.push("Akansha");
@@ -108,11 +110,76 @@ int main(){
     while(!s.empty()){
       cout<<s.top()<<" ";
       s.pop();
-    }cout<<endl;
-    s.pop();
-    cout<<"Top Element after pop "<<s.top()<<endl;
+    }
+    cout<<endl;
+    // cout<<"Top Element after pop "<<s.top()<<endl;
     cout<<"Size "<<s.size()<<endl;
     cout<<"Either empty or not "<<s.empty()<<endl;
 
+    // #Queue
+     // First in First out
+    queue<string> q;
+    q.push("Hey");
+    q.push("Beatuiful");
+    q.push("people");
+    while(!q.empty()){
+      cout<<q.front()<<" ";
+      q.pop();
+    }cout<<endl;
+    
+    // #Priority Queue, It's by default Max heap
+    // where first element always and must be Max
+   
+   // Max heap
+   priority_queue<int> maxi;
+   // Min heap
+   priority_queue<int, vector<int>, greater<int>> mini;
+   maxi.push(4);
+   maxi.push(8);
+   maxi.push(2);
+   maxi.push(5);
+   while(!maxi.empty()){
+       cout<<maxi.top()<<" ";
+       maxi.pop();
+   }cout<<endl;
+    
+    mini.push(7);
+    mini.push(2);
+    mini.push(5);
+    mini.push(3);
+    int n=mini.size(); // not directly writtig size in loop coz after every pop it's size will decrease and we will not able to get all 4 outputs
+    for(int i=0;i<n;i++){
+        cout<<mini.top()<<" ";
+        mini.pop();
+    }cout<<endl;
+    cout<<"Is Mini Empty: "<< mini.empty()<<endl; // as after every pop it got empty
+    
+    // #Set
+     // set always store unique element
+     // Once entered can't be modified either delete or insert
+     // implementation behind the scene by using BST (Binary search tree)
+     // Always returned in sorted order
+     // set slower than unorderd set(not in sorted)
+     set<int> swet;
+     swet.insert(3);  // comlexcity of insert is O(logn)
+     swet.insert(4);
+     swet.insert(9);
+     swet.insert(2);
+     swet.insert(2);
+     swet.insert(3);
+     swet.insert(9);
+     for(int i:swet){
+         cout<<i<<" ";
+     }cout<<endl;
+     
+    set<int>::iterator it =swet.begin();
+    it++;
+    swet.erase(it);
+     for(int i:swet){
+         cout<<i<<" ";
+     }cout<<endl;
+     cout<<"Is -5 present?? : "<<swet.count(-5)<<endl;
+    set<int>::iterator itr= swet.find(4);
+    cout<<"is 4 present : " <<*itr<<endl;
     return 0;
 }
