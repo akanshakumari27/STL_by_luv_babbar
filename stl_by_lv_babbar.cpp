@@ -6,6 +6,8 @@
 #include<stack>
 #include<queue>
 #include<set>
+#include<map>
+#include<algorithm>
 using namespace std;
 int main(){
       // # Array (static)
@@ -161,9 +163,9 @@ int main(){
      // Always returned in sorted order
      // set slower than unorderd set(not in sorted)
      set<int> swet;
-     swet.insert(3);  // comlexcity of insert is O(logn)
+     swet.insert(3);  // (insert, find, erase and count) comlexcity O(logn)
      swet.insert(4);
-     swet.insert(9);
+     swet.insert(9);  // (size, begin, end, empty) complexcity O(1)
      swet.insert(2);
      swet.insert(2);
      swet.insert(3);
@@ -180,6 +182,70 @@ int main(){
      }cout<<endl;
      cout<<"Is -5 present?? : "<<swet.count(-5)<<endl;
     set<int>::iterator itr= swet.find(4);
-    cout<<"is 4 present : " <<*itr<<endl;
+    cout<<"is 4 present : " <<*it<<endl;
+
+    // #Map
+      // return in sorted order
+      //all key point towards unique and single value
+    map<int, string> m;
+    m[1]={"Helloo"};
+    m[13]={"Yes"};
+    m[4]={"got you"};
+    m.insert({10,"bheem"});
+
+    for(auto i:m){
+      cout<<i.first<<" "<<i.second<<" ";  // first-> key, second-> value
+    }cout<<endl;
+    for(auto l:m){
+      cout<<l.second<<" ";
+    }cout<<endl;
+
+  cout<<"To check 13 present or not: "<<m.count(13)<<endl;
+  m.erase(13); // in map u just need to give the value of key and it will erase all entire
+  // insert, erase, find, count, all complexcity O(log N)
+  // for unordered map , search complexcity O(1)
+  
+
+  // #Algorithms
+    // For Binary serch, vector must be in sorted form
+    vector<int> v2;
+    v2.push_back(2);
+    v2.push_back(4);
+    v2.push_back(6);
+    v2.push_back(7);
+    cout<<"Is 6 present in vector "<<binary_search(v2.begin(),v2.end(),6)<<endl;
+
+      // Upper bound and lower bound
+    cout<<"Lower bound: "<< lower_bound(v.begin(),v.end(),6)-v.begin()<<endl; // to get index of given value
+    cout<<"Upper bound: "<< upper_bound(v.begin(),v.end(),6)-v.begin()<<endl;
+
+      // Max and Min
+    int jk=7;
+    int ul=4;
+    cout<<"Max is: "<<max(jk,ul)<<" "<<"Min is: "<<min(jk,ul)<<endl;
+      // Swap
+    swap(jk,ul);
+    cout<<"jk-> "<<jk<<" ul-> "<<ul<<endl;
+      // Reverse
+    string nop="abcd";
+    cout<<nop<<endl<<"After Reverse "<<endl;
+    reverse(nop.begin(),nop.end());
+    cout<<nop<<endl;
+      // Rotate vector
+    cout<<"Before rotate vector"<<endl;
+    for(int i:v2){
+      cout<<i<<" ";
+    }cout<<endl;
+
+    rotate(v2.begin(),v2.begin()+1,v2.end());
+    cout<<"After rotate: "<<endl;
+
+    for(int i:v2){
+      cout<<i<<" ";
+    }cout<<endl;
+
+      // Sort
+    sort(v2.begin(),v2.end());
+    
     return 0;
 }
